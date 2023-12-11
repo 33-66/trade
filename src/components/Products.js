@@ -1,58 +1,65 @@
-import './Products.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import CartButton from "./CartButton";
 import SearchBar from './SearchBar';
 import CategoryFilter from './Filter';
-import CartButton from './CartButton';
-//import Cart from './ShoppingCart';
+import "./Products.css";
 
-function Products() {
-    const [data, setData] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
-    const [categories, setCategories] = useState([]);
-    
+function Products({ products, addToCart }) {
+    const [loading, setLoading] = useState(true); // Initialize loading state
+
+    const categories = [...new Set(products.map((item) => item.category))];
+    const [selectedCategory, setSelectedCategory] = useState('All');
+
+    const filterByCategory = (category) => {
+        if (category === 'All') {
+            return products;
+        }
+        return products.filter((item) => item.category === category);
+    };
+
+    const handleCategoryChange = (category) => {
+        setSelectedCategory(category);
+    };
 
     useEffect(() => {
-        fetch("https://category-zfcn.onrender.com/products")
-            .then(response => response.json())
-            .then((data) => {
-                setData(data);
-                const uniqueCategories = [...new Set(data.map(item => item.category))];
-                setCategories(uniqueCategories);
-            });
+        // Simulate loading delay using setTimeout (replace with your actual backend fetch)
+        const timeout = setTimeout(() => {
+            setLoading(false); // Set loading to false after a delay (replace with your fetch logic)
+        }, 2000); // Adjust this timeout value as needed
+
+        return () => clearTimeout(timeout); // Clean up timeout on component unmount
     }, []);
-
-    function handleQuantity(item) {
-        const itemToUpdate = data.find(dataItem => dataItem.id === item.id);
-
-        if (itemToUpdate && itemToUpdate.quantity > 0) {
-            const updatedData = data.map(dataItem => {
-                if (dataItem.id === item.id) {
-                    return { ...dataItem, quantity: dataItem.quantity - 1 };
-                }
-                return dataItem;
-            });
-            setData(updatedData);
-        }
-    }
-    
-    const filteredData = selectedCategory ? data.filter(item => item.category === selectedCategory) : data;
 
     return (
         <div className="products-container">
             <h1>Products</h1>
-            <CartButton />
+
             <div className="centered-search">
-                <SearchBar data={data} />
+                <SearchBar data={products} />
             </div>
+            <div>
+               <CartButton /> 
+            </div>
+
             <CategoryFilter
                 categories={categories}
                 selectedCategory={selectedCategory}
-                onSelectCategory={setSelectedCategory}
+                onSelectCategory={handleCategoryChange}
             />
-            <ul className="product-list">
-                {filteredData.map((item) => (
-                    <li key={item.id} className="product-item">
-                        <span style={{ color: "darkgrey" }}><h4>{item.name}</h4></span>
+
+            {loading ? (
+                <div
+                className="loading-container">
+                    <div className="spinner"></div>
+                
+                    <p>Loading...</p>
+                    </div>
+            ) : (
+                <ul className="product-list">
+                    {filterByCategory(selectedCategory).map((item) => (
+                        <li key={item.id} className="product-item">
+                        <span style={{ color: "darkgrey" }}>
+                            <h4>{item.name}</h4></span>
                         <br />
                         <img
                             src={item.image}
@@ -68,13 +75,14 @@ function Products() {
                         <br />
                         <strong>Category:</strong>{item.category}
                         <br></br>
-                        <button onClick={() => handleQuantity(item)} className="add-to-cart-btn">
+                        <button className="add-to-cart-btn" onClick={addToCart}>
                             Add To Cart
                         </button>
-                    </li>
-                ))}
-            </ul>
-            {/* <Cart cartItems={cartItems} removeFromCart={removeFromCart} /> */}
+                    </li> 
+                    ))}
+                </ul>
+            )}
+
         </div>
     );
 }

@@ -1,17 +1,24 @@
-import React from 'react'
-import { useNavigate } from 'react-router'
+import React from 'react';
+import "./Products.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router';
 
 function CartButton() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     function handleClick() {
-        navigate("/cart")
+        navigate("/cart");
     }
 
     return (
-        <button onClick={handleClick}>
-            Shopping Cart
-        </button>
-    )
+        <div className="container">
+            <button className="cart-button" onClick={handleClick}>
+                <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
+                Shopping Cart
+            </button>
+        </div>
+    );
 }
 
-export default CartButton
+export default CartButton;

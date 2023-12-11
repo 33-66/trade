@@ -57,4 +57,34 @@
     margin-bottom: 20px; /* Adjust margin as needed */
   }
 
-  
+  /* Products.css */
+
+/* Styles for the cart button */
+.container {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.cart-button {
+    /* Your existing button styles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: 1px solid blue;
+    border-radius: 4px;
+    background-color: aqua;
+    color: #333333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cart-button:hover {
+    background-color: #f0f0f0;
+}
+
+.cart-icon {
+    margin-right: 8px;
+}

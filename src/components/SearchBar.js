@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const SearchBar = ({ data }) => {
-console.log(data);
+
     const [input, setInput] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
@@ -16,7 +16,7 @@ console.log(data);
             );
 
             if (filtering.length === 0) {
-                alert("Sorry, we don't have houses in that region!Try Another Address.");
+                alert("Sorry, we don't have those  products thanks.");
             }
 
             setFilteredData(filtering);

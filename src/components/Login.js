@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+
 function Login() {
+  
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
@@ -19,20 +21,19 @@ function Login() {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+    // ... existing code
 
-    const { fullname, email, password } = input;
+    if ( input.fullname.trim() !== '' && input.email.trim() !== '' && input.password.trim() !== '') {
+      // If all fields are filled, log in the user
+       // Trigger the login function from AuthProvider
 
-    if (fullname.trim() !== '' && email.trim() !== '' && password.trim() !== '') {
-      // If all fields are filled, navigate to the dashboard
       navigate('/dashboard');
-      alert(`Thanks  ${input.fullname} for joining us`)
+      alert(`Thanks ${input.fullname} for joining us`);
     } else {
       // If any field is empty, show an alert
       alert('Please enter all fields');
     }
   }
-
   return (
     
 <div
@@ -40,7 +41,7 @@ style={{
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh', // Optional: adjust the height as needed
+    height: '81vh', // Optional: adjust the height as needed
     background: 'white' 
     }}
     
@@ -48,7 +49,7 @@ style={{
     <form onSubmit={handleSubmit}
     style={{
         border: '1px solid blue',
-        padding: '100px',
+        padding: '80px',
         borderRadius: '10px',
         backgroundColor: 'yellow'
     }}

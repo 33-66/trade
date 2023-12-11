@@ -22,7 +22,7 @@ function PostForm() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const apiUrl = "https://category-zfcn.onrender.com/products";
+        const apiUrl = "https://homy-6bvz.onrender.com/products";
 
         fetch(apiUrl, {
             method: 'POST',
@@ -33,8 +33,8 @@ function PostForm() {
         })
             .then((response) => {
                 if (response.ok) {
-                    console.log('Property data submitted successfully');
-                    alert('Property data submitted successfully');
+                    console.log('Product data submitted successfully');
+                    alert('Product data submitted successfully');
 
                     // Reset the form after successful submission
                     setData({
@@ -49,13 +49,13 @@ function PostForm() {
 
                     });
                 } else {
-                    console.error('Failed to submit property data');
-                    alert('Failed to submit property data');
+                    console.error('Failed to submit  product');
+                    alert('Failed to submit property product');
                 }
             })
             .catch((error) => {
-                console.error('Error submitting property data:', error);
-                alert('Error submitting property data');
+                console.error('Error submitting product data:', error);
+                alert('Error submitting product data');
             });
     }
 
@@ -74,6 +74,10 @@ function PostForm() {
              alt="Try again" />
         </figure> */}
             <div className="form-container"
+            style={{
+                height:"78vh"
+            }}
+            
             >
 
                
@@ -148,10 +152,20 @@ function PostForm() {
                             onChange={handleChange}
                             required
                         >
-                            <option value="choose">choose</option>
+                            
                             <option value="clothing">clothing</option>
                             <option value="electronics">electronics</option>
-
+                            <option value="vehicles">vehicles</option>
+                            <option value="furniture">furniture</option>
+                            <option value="Beauty">Beauty</option>
+                            <option value="Jewwelery accesories">Jewwelery accesories</option>
+                            <option value="Food and Beverages">Food and Beverages</option>
+                            <option value="Toys and games">Toys and games</option>
+                            <option value="pet supplies">pet supplies</option>
+                            <option value="sports and outdoors">sports and outdoors</option>
+                            <option value="Books and  stationary">Books and  stationary</option>
+                            <option value="Health">Health</option>
+                            <option value="others">others</option>
                         </select>
 
                     </label>

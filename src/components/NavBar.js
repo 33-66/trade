@@ -9,6 +9,7 @@ function NavBar() {
     textDecoration: "none", // Adjust as needed
     display: "flex",
     alignItems: "center",
+    padding:"20px"
     
   };
 
@@ -33,7 +34,7 @@ function NavBar() {
         <FaPlus style={iconStyle} /> Post
       </NavLink>
       <NavLink style={navLinkStyle} to="/cart">
-        <FaShoppingCart style={iconStyle} /> Cart
+        <FaShoppingCart style={iconStyle} />Basket
       </NavLink>
     </div>
   );

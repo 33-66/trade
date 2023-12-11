@@ -59,3 +59,20 @@
   height: 200px;
   object-fit: cover;
 }
+
+/* MyComponent.css */
+
+.container {
+  max-width: 960px; /* Set maximum width */
+  margin: 0 auto; /* Center align the container */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Media query for smaller screens (mobile devices) */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Reduce padding for smaller screens */
+    font-size: 14px; /* Adjust font size */
+  }
+}

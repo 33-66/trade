@@ -1,0 +1,23 @@
+/* For mobile devices */
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    /* For example: */
+    .container {
+      width: 100%;
+      padding: 10px;
+    }
+    /* Adjust other elements as needed */
+  }
+  
+  /* For tablets or larger screens */
+  @media (min-width: 768px) {
+    /* Adjust styles for larger screens */
+    /* For example: */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* Adjust other elements as needed */
+  }
+  
