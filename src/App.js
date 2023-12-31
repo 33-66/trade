@@ -40,7 +40,7 @@ function App() {
     <AuthProvider>
       <NavBar />
       <Routes>
-        
+        < Route path='/' element={<Login/>}></Route>        
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Home/>}/>
         <Route path="/products" element={<Products products={products} addToCart={addToCart}/>}></Route>

@@ -6,10 +6,13 @@ function ShoppingCart({ cart, removeFromCart }) {
     
   return (
     <div
+
     style={{
         height:"79vh"
     }}
+    
     >
+      
       <h1>Shopping Cart</h1>
       <Add />
       <ul>
